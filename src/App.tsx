@@ -1,10 +1,15 @@
+import './App.css'
 import Navbar from './components/Navbar'
+import Home from './pages/Home'
 
 function App() {
   return (
-    <div className="App">
+    <nav className="App">
       <Navbar />
-    </div>
+      <div>
+        <Home />
+      </div>
+    </nav>
   )
 }
 
