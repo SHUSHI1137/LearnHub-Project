@@ -17,6 +17,10 @@ export interface ContentDTO {
   }
 }
 
+export interface ContentsDTO {
+  data: ContentDTO[]
+}
+
 export interface CreatePostDTO {
   videoUrl: string
   comment: string
