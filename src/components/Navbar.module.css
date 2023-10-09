@@ -1,0 +1,47 @@
+.nav {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  background-color: gainsboro;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 20px 18px;
+}
+
+button {
+  border: none;
+  background-color: #aac4ff;
+  height: 28px;
+  border-radius: 10px;
+}
+
+.menu {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.inactive {
+  text-decoration: none;
+}
+
+.active {
+  color: blanchedalmond;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: gray;
+}
+
+.login {
+  background-color: #eee;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 6px;
+}
+
+.login:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
