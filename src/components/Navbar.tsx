@@ -1,10 +1,31 @@
-export const Navbar = () => {
+import { Link, NavLink } from 'react-router-dom'
+import { useAuth } from '../providers/AuthProvider'
+import classes from './Navbar.module.css'
+
+const Navbar = () => {
+  const { isLoggedIn, logout } = useAuth()
+
   return (
-    <nav className="flex justify-between w-full h-auto item-center box-border px-8">
-      <div className="flex gap-4 item-center">
+    <nav className={classes.nav}>
+      <div className={classes.menu}>
         <p>Logo</p>
+      </div>
+      <div className={classes.menu}>
         <p>Register</p>
-        <p>Login</p>
+        {isLoggedIn ? (
+          <>
+            <NavLink className={({ isActive }) => (isActive ? classes.active : classes.inactive)} to="/create">
+              Create
+            </NavLink>
+            <Link to="/" className={classes.login} onClick={logout}>
+              Log out
+            </Link>
+          </>
+        ) : (
+          <Link to="/login" className={classes.login}>
+            Login
+          </Link>
+        )}
       </div>
     </nav>
   )
