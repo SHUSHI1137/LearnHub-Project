@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import useContent from '../hooks/useContent'
 import classes from './ContentDetail.module.css'
+import ReactPlayer from 'react-player'
 
 const ContentDetail = () => {
   const { id } = useParams()
@@ -17,15 +18,9 @@ const ContentDetail = () => {
             <h1>{content.videoTitle}</h1>
             <h5>{content.creatorName}</h5>
           </div>
-          {/* <iframe
-            width="560"
-            height="315"
-            src={content.videoUrl}
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe> */}
+          <div>
+            <ReactPlayer url={content.videoUrl} />
+          </div>
           <div>
             <p>{content.comment}</p>
             <div>
