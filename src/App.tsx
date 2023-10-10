@@ -7,6 +7,7 @@ import { useAuth } from './providers/AuthProvider'
 import GuardedRoute from './guard/GuardedRoute'
 import Login from './pages/Login'
 import ContentDetail from './pages/ContentDetail'
+import EditContent from './pages/EditContent'
 
 function App() {
   const { isLoggedIn } = useAuth()
@@ -20,6 +21,7 @@ function App() {
 
         <Route element={<GuardedRoute isRouteAccessible={isLoggedIn} redirectRoute="/login" />}>
           <Route path="/create" element={<CreateContent />} />
+          <Route path="/content/:id/edit" element={<EditContent />} />
         </Route>
         <Route element={<GuardedRoute isRouteAccessible={!isLoggedIn} redirectRoute="/" />}>
           <Route path="/login" element={<Login />} />

@@ -50,11 +50,12 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
   }
 
   const logout = () => {
-    localStorage.clear
+    localStorage.clear()
     setIsLoggedIn(false)
     setUsername(null)
     navigate('/')
   }
+
   return <AuthContext.Provider value={{ isLoggedIn, login, username, logout }}>{children}</AuthContext.Provider>
 }
 

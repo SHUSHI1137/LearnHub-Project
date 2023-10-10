@@ -1,11 +1,11 @@
-import { useParams } from 'react-router-dom'
+import { useParams, Link, NavLink } from 'react-router-dom'
 import useContent from '../hooks/useContent'
 import classes from './ContentDetail.module.css'
 import ReactPlayer from 'react-player'
 
 const ContentDetail = () => {
   const { id } = useParams()
-  const { content, isLoading, error } = useContent(id || '1')
+  const { content, isLoading, error, deleteContent } = useContent(id || '1')
 
   if (isLoading) return <h1>Loading...</h1>
   if (error) return <p>{error}</p>
@@ -28,6 +28,23 @@ const ContentDetail = () => {
               <p>{content.postedBy.username}</p>
               <p>{content.createdAt}</p>
               <p>{content.updatedAt}</p>
+            </div>
+            <div>
+              {localStorage.getItem('username') === content.postedBy.username ? (
+                <>
+                  <NavLink
+                    className={({ isActive }) => (isActive ? classes.active : classes.inactive)}
+                    to={`/content/${id}/edit`}
+                  >
+                    Edit{' '}
+                  </NavLink>
+                </>
+              ) : (
+                <Link to="/login" className={classes.login}></Link>
+              )}
+            </div>
+            <div>
+              <button onClick={deleteContent}>Delete</button>
             </div>
           </div>
         </>
