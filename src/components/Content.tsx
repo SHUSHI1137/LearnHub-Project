@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ContentDTO } from '../types/dto'
+import classes from './Content.module.css'
 
 interface IContentsProps {
   contents: ContentDTO
@@ -7,7 +8,7 @@ interface IContentsProps {
 
 const Content = ({ contents }: IContentsProps) => {
   return (
-    <div>
+    <div className={classes.content}>
       <Link to={`/content/${contents.id}`} style={{ textDecoration: 'none', color: 'black' }}>
         <a>
           <img src={contents.thumbnailUrl}></img>
