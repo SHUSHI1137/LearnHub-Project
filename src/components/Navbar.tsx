@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../providers/AuthProvider'
 import classes from './Navbar.module.css'
 
@@ -16,9 +16,6 @@ const Navbar = () => {
       <div className={classes.menu}>
         {isLoggedIn ? (
           <>
-            <NavLink className={({ isActive }) => (isActive ? classes.active : classes.inactive)} to="/create">
-              Create
-            </NavLink>
             <Link to="/" className={classes.login} onClick={logout}>
               Log out
             </Link>
