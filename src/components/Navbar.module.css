@@ -45,3 +45,17 @@ button {
   background-color: lightgray;
   cursor: pointer;
 }
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.register {
+  background-color: #eee;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 6px;
+}

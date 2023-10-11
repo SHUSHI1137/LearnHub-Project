@@ -2,6 +2,7 @@ import { FormEvent, useState } from 'react'
 import updateContent from '../hooks/useContent'
 import { useNavigate, useParams } from 'react-router-dom'
 import classes from '../pages/EditContent.module.css'
+import Button from '@mui/joy/Button'
 
 const EditContent = () => {
   const { id } = useParams()
@@ -24,6 +25,7 @@ const EditContent = () => {
   }
 
   if (isLoading) return <h1>Loading....</h1>
+
   return (
     <div className={classes.container}>
       <form className={classes.contentForm} onSubmit={handleSubmit}>
@@ -33,9 +35,9 @@ const EditContent = () => {
         <label>Rating</label>
         <input type="number" value={editRating} onChange={(e) => setEditRating(Number(e.target.value))} required />
 
-        <button type="submit" disabled={isSubmitting}>
+        <Button type="submit" variant="solid" disabled={isSubmitting}>
           {isSubmitting ? 'Submitting...' : 'Submit'}
-        </button>
+        </Button>
       </form>
     </div>
   )
