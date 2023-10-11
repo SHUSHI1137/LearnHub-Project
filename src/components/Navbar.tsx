@@ -7,11 +7,13 @@ const Navbar = () => {
 
   return (
     <nav className={classes.nav}>
-      <div className={classes.menu}>
-        <p>Logo</p>
+      <div>
+        <Link to="/">
+          <img src="/src/assets/logo.svg"></img>
+          <span>LearnHub</span>
+        </Link>
       </div>
       <div className={classes.menu}>
-        <p>Register</p>
         {isLoggedIn ? (
           <>
             <NavLink className={({ isActive }) => (isActive ? classes.active : classes.inactive)} to="/create">
@@ -22,9 +24,15 @@ const Navbar = () => {
             </Link>
           </>
         ) : (
-          <Link to="/login" className={classes.login}>
-            Login
-          </Link>
+          <>
+            <Link to="/register" className={classes.register}>
+              Register
+            </Link>
+
+            <Link to="/login" className={classes.login}>
+              Login
+            </Link>
+          </>
         )}
       </div>
     </nav>
