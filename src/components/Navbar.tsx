@@ -1,6 +1,7 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../providers/AuthProvider'
 import classes from './Navbar.module.css'
+import Button from '@mui/joy/Button'
 
 const Navbar = () => {
   const { isLoggedIn, logout } = useAuth()
@@ -8,19 +9,16 @@ const Navbar = () => {
   return (
     <nav className={classes.nav}>
       <div>
-        <Link to="/">
-          <img src="/src/assets/logo.svg"></img>
-          <span>LearnHub</span>
+        <Link to="/" className="flex flex-initial	items-center text-2xl ">
+          <img src="/src/assets/logo.svg" className="w-12 h-12"></img>
+          <span className="font-extrabold	text-orange-500	">LearnHub</span>
         </Link>
       </div>
       <div className={classes.menu}>
         {isLoggedIn ? (
           <>
-            <NavLink className={({ isActive }) => (isActive ? classes.active : classes.inactive)} to="/create">
-              Create
-            </NavLink>
-            <Link to="/" className={classes.login} onClick={logout}>
-              Log out
+            <Link to="/" onClick={logout}>
+              <Button className="#C41C1C">Log out</Button>
             </Link>
           </>
         ) : (

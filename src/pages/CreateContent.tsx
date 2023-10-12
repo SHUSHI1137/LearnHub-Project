@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import useContents from '../hooks/useContents'
 import { FormEvent, useState } from 'react'
 import classes from '../pages/CreateContent.module.css'
+import ReactStars from 'react-stars'
 
 const CreateContent = () => {
   const { isLoading, isSubmitting, createContent } = useContents()
@@ -9,6 +10,11 @@ const CreateContent = () => {
   const [newVideoUrl, setNewVideoUrl] = useState<string>('')
   const [newComment, setNewComment] = useState<string>('')
   const [newRating, setNewRating] = useState<number>(0)
+
+  const handleRating = (rating: number) => {
+    setNewRating(rating)
+    console.log(rating)
+  }
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
@@ -21,8 +27,10 @@ const CreateContent = () => {
       console.error(err)
     }
   }
+  console.log(handleSubmit)
 
   if (isLoading) return <h1>Loading.....</h1>
+
   return (
     <div className={classes.container}>
       <form className={classes.contentForm} onSubmit={handleSubmit}>
@@ -32,8 +40,7 @@ const CreateContent = () => {
         <label>Body</label>
         <input type="text" value={newComment} onChange={(e) => setNewComment(e.target.value)} required />
         <label>Rating</label>
-        <input type="number" value={newRating} onChange={(e) => setNewRating(Number(e.target.value))} required />
-
+        <ReactStars count={5} onChange={handleRating} value={newRating} size={24} color2={'#ffd700'} half={false} />
         <button type="submit" disabled={isSubmitting}>
           {isSubmitting ? 'Submitting...' : 'Submit'}
         </button>
