@@ -2,6 +2,7 @@ import useContents from '../hooks/useContents'
 import Content from '../components/Content'
 import { useAuth } from '../providers/AuthProvider'
 import { NavLink } from 'react-router-dom'
+import Button from '@mui/joy/Button'
 
 const Home = () => {
   const { contents, isLoading } = useContents()
@@ -12,17 +13,20 @@ const Home = () => {
   console.log(contents)
   return (
     <>
-      <section>
+      <section className="flex text-left flex-col	gap-2 py-12	px-8 max-w-3xl">
         <h1>LearnHubJa</h1>
         <h2>Hub for Educational Videos</h2>
       </section>
       <div>
-        <h2 className="font-bold text-5xl">Content</h2>
-      </div>
-      <div>
         {isLoggedIn ? (
           <>
-            <NavLink to="/create">Create</NavLink>
+            <div className="flex justify-end	my-8 mx-20 ">
+              <NavLink to="/create">
+                <Button color="success" size="lg" variant="solid">
+                  Create Content
+                </Button>
+              </NavLink>
+            </div>
           </>
         ) : (
           <></>
@@ -39,3 +43,8 @@ const Home = () => {
 }
 
 export default Home
+
+// color = 'success'
+// onClick = { function() {} }
+// size = 'lg'
+// variant = 'solid'

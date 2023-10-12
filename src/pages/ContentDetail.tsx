@@ -44,9 +44,7 @@ const ContentDetail = () => {
               ) : (
                 <Link to="/login" className={classes.login}></Link>
               )}
-            </div>
-            <div>
-              <button onClick={deleteContent}>Delete</button>
+              <div>{<button onClick={deleteContent}>Delete</button>}</div>
             </div>
           </div>
         </>
