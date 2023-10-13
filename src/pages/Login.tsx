@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { FormEvent, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../providers/AuthProvider'
@@ -20,7 +21,7 @@ const Login = () => {
   }
 
   return (
-    <main className="block box--border">
+    <main className="block box-border">
       <div className="flex flex-col items-center justify-center box-border m-12">
         <p className="text-4xl font-extrabold text-orange-600">Login</p>
         <form className="flex flex-col gap-6 m-8" onSubmit={handleSubmit}>

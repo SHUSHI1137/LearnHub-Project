@@ -7,7 +7,7 @@ const Navbar = () => {
   const { isLoggedIn, logout } = useAuth()
 
   return (
-    <nav className="flex w-full	h-full justify-between bg-gradient-to-r from-blue-800 to-blue-500	items-center py-5 px-4	mx--8">
+    <nav className="flex w-full	h-full justify-between bg-gradient-to-r from-blue-800 to-blue-500	items-center py-5 px-4	">
       <div>
         <Link to="/" className="flex flex-initial	items-center text-2xl ">
           <img src="/src/assets/logo.svg" className="w-12 h-12"></img>

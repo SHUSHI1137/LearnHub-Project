@@ -1,22 +1,21 @@
 import useContents from '../hooks/useContents'
-import Content from '../components/Content'
 import { useAuth } from '../providers/AuthProvider'
 import { NavLink } from 'react-router-dom'
 import Button from '@mui/joy/Button'
+import Content from '../components/Content'
 
 const Home = () => {
-  const { contents, isLoading } = useContents()
+  const { contents, isLoading, error } = useContents()
   const { isLoggedIn } = useAuth()
 
   if (isLoading) return <h1>Loading...</h1>
 
+  if (error || !contents) return <p className="text-center text-red-500">{error}</p>
+
   console.log(contents)
   return (
     <>
-      <section
-        className="flex text-left flex-col	gap-2 py-6	px-8 bg-gradient-to-r w-full from-blue-800 to-blue-500 underline-offset-4
-"
-      >
+      <section className="flex text-left flex-col	gap-2 py-6	px-8 bg-gradient-to-r w-full from-blue-800 to-blue-500 underline-offset-4">
         <h1 className="subpixel-antialiased hover:italic text-5xl font-black	w-fit text-orange-500 underline decoration-pink-500">
           LearnHub
         </h1>
