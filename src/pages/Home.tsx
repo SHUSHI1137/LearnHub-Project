@@ -13,9 +13,14 @@ const Home = () => {
   console.log(contents)
   return (
     <>
-      <section className="flex text-left flex-col	gap-2 py-12	px-8 max-w-3xl">
-        <h1>LearnHubJa</h1>
-        <h2>Hub for Educational Videos</h2>
+      <section
+        className="flex text-left flex-col	gap-2 py-6	px-8 bg-gradient-to-r w-full from-blue-800 to-blue-500 underline-offset-4
+"
+      >
+        <h1 className="subpixel-antialiased hover:italic text-5xl font-black	w-fit text-orange-500 underline decoration-pink-500">
+          LearnHub
+        </h1>
+        <h2 className="antialiased text-stone-50/70 text-xl		">Hub for Educational Videos</h2>
       </section>
       <div>
         {isLoggedIn ? (
@@ -43,8 +48,3 @@ const Home = () => {
 }
 
 export default Home
-
-// color = 'success'
-// onClick = { function() {} }
-// size = 'lg'
-// variant = 'solid'
