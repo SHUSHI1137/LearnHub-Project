@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ContentDTO, UpdateContentDTO } from '../types/dto'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 const useContent = (id: string) => {
@@ -18,7 +18,8 @@ const useContent = (id: string) => {
 
         setContent(res.data)
       } catch (err) {
-        setError('Data not found')
+        if (err instanceof AxiosError) setError(err.response?.data.message)
+        console.log(err)
       } finally {
         setIsLoading(false)
       }
@@ -46,7 +47,7 @@ const useContent = (id: string) => {
 
       console.log(res.data)
     } catch (err) {
-      throw new Error('Cannot edit content')
+      // if (err instanceof AxiosError) throw new Error(err.response?.data.message)
     } finally {
       setIsSubmitting(false)
     }

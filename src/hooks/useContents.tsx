@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { ContentsDTO, CreatePostDTO } from '../types/dto'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 
 const useContents = () => {
   const [contents, setContents] = useState<ContentsDTO | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,6 +17,7 @@ const useContents = () => {
         console.log(res.data)
         setContents(res.data)
       } catch (err) {
+        if (err instanceof AxiosError) setError(err.response?.data.message)
         console.error(err)
       } finally {
         setIsLoading(false)
@@ -44,13 +46,13 @@ const useContents = () => {
 
       console.log(res.data)
     } catch (err) {
-      throw new Error('Cannot create content')
+      if (err instanceof AxiosError) throw new Error(err.response?.data.message)
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  return { contents, isLoading, isSubmitting, createContent }
+  return { contents, isLoading, isSubmitting, error, createContent }
 }
 
 export default useContents

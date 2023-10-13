@@ -15,13 +15,13 @@ const Content = ({ contents }: IContentsProps) => {
           <div className="flex flex-col italic font-extrabold text-ellipsis">
             <p>{contents.videoTitle}</p>
           </div>
-          <div className="flex flex-col italic gap-0	">
+          <div className="flex flex-col italic gap-3 mt-1 text-sm text-neutral-600">
             <p>{contents.creatorName}</p>
           </div>
-          <div className="flex flex-col h-full font-medium gap-4">
+          <div className="flex flex-col h-full font-medium gap-4 mt-5">
             <h5>{contents.comment}</h5>
           </div>
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center mt-1">
             <p>{contents.postedBy.username}</p>
             <ReactStars count={5} value={contents.rating} size={24} color2={'#ffd700'} edit={false} />
           </div>
