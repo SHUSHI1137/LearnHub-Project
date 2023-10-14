@@ -14,7 +14,7 @@ const ContentDetail = () => {
 
   return (
     <main className=" block box-border">
-      <div className="block box-border m-8 p-0 w-3/5 mx-auto max-w-screen-xl items-center justify-center ">
+      <div className="block box-border m-8 p-0 w-3/5 mx-auto max-w-screen-xl items-center justify-center">
         <div className="flex flex-col box-border gap-6 bg-gradient-to-r from-blue-800 to-blue-500 rounded-md p-8 items-center justify-center">
           {content && (
             <>
@@ -26,8 +26,8 @@ const ContentDetail = () => {
                   {content.creatorName}
                 </a>
               </div>
-              <div className="flex flex-col w-fit h-full">
-                <ReactPlayer url={content.videoUrl} />
+              <div className="flex flex-col justify-center w-5/6 h-96 items-center md:shrink-0">
+                <ReactPlayer url={content.videoUrl} width="100%" height="100%" />
               </div>
               <div className="flex flex-col font-serif relative px-10 py-3 w-full rounded-lg gap-3 bg-neutral-100 leading-6 text-neutral-600">
                 <p className="font-mono text-xl font-semibold">{content.comment}</p>
