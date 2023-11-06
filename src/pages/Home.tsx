@@ -38,7 +38,7 @@ const Home = () => {
       </div>
       <div className="grid grid-cols-4 my-6 mx-8 justify-items-stretch	items-stretch gap-8	">
         {contents &&
-          contents.data.map((content) => {
+          contents.map((content) => {
             return <Content key={content.id} contents={content} />
           })}
       </div>
