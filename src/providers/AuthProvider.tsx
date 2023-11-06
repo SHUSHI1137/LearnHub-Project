@@ -37,7 +37,7 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
     const loginBody: LoginDTO = { username, password }
 
     try {
-      const res = await axios.post<CredentialDTO>('https://api.learnhub.thanayut.in.th/auth/login', loginBody, {
+      const res = await axios.post<CredentialDTO>('http://localhost:8080/auth/login', loginBody, {
         headers: { 'Content-Type': 'application/json' },
       })
 
@@ -61,7 +61,7 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
     const createUserBody: RegisterDTO = { username, name, password }
 
     try {
-      const res = await axios.post('https://api.learnhub.thanayut.in.th/user', createUserBody)
+      const res = await axios.post('http://localhost:8080/user', createUserBody)
 
       console.log(res)
     } catch (err) {

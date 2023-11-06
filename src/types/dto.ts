@@ -1,25 +1,43 @@
+//* Old ContentDTO
+// export interface ContentDTO {
+//   id: number
+//   videoTitle: string
+//   videoUrl: string
+//   comment: string
+//   rating: number
+//   thumbnailUrl: string
+//   creatorName: string
+//   creatorUrl: string
+//   createdAt: string
+//   updatedAt: string
+//   postedBy: {
+//     id: number
+//     username: string
+//     name: string
+//     registeredAt: string
+//   }
+// }
+
 export interface ContentDTO {
   id: number
   videoTitle: string
   videoUrl: string
   comment: string
   rating: number
-  thumbnailUrl: string
+  thumbnaiUrl: string
   creatorName: string
   creatorUrl: string
-  createdAt: string
-  updatedAt: string
-  postedBy: {
+  User: {
     id: number
     username: string
     name: string
     registeredAt: string
   }
+  createdAt: Date
+  updatedAt: Date
 }
 
-export interface ContentsDTO {
-  data: ContentDTO[]
-}
+export type ContentsDTO = ContentDTO[]
 
 export interface CreatePostDTO {
   videoUrl: string

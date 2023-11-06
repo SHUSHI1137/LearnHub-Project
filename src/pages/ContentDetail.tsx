@@ -33,7 +33,7 @@ const ContentDetail = () => {
                 <p className="font-mono text-xl font-semibold">{content.comment}</p>
                 <div className="flex flex-col items-end gap-1.5 text-right text-lg">
                   <ReactStars count={5} value={content.rating} size={24} color2={'#ffd700'} half={false} edit={false} />
-                  <p>By - {content.postedBy.username}</p>
+                  <p>By - {content.User.username}</p>
                   <p>{moment(content.createdAt).format('ddd MMM Do YY')}</p>
                   {content.updatedAt !== content.createdAt ? (
                     <p>(Update On: {moment(content.createdAt).format('ddd MMM Do YY')})</p>
@@ -42,7 +42,7 @@ const ContentDetail = () => {
                   )}
                 </div>
                 <div className="flex flex-row justify-end items-center font-sans text-right text-sm gap-5 mt-1 font-extrabold	text-orange-600  underline decoration2-pink-500 underline-offset-4">
-                  {localStorage.getItem('username') === content.postedBy.username ? (
+                  {localStorage.getItem('username') === content.User.username ? (
                     <NavLink
                       className={({ isActive }) => (isActive ? classes.active : classes.inactive)}
                       to={`/content/${id}/edit`}
@@ -52,7 +52,7 @@ const ContentDetail = () => {
                   ) : (
                     <Link to="/login" className={classes.login}></Link>
                   )}
-                  {localStorage.getItem('username') === content.postedBy.username ? (
+                  {localStorage.getItem('username') === content.User.username ? (
                     <>{<button onClick={deleteContent}>Delete</button>}</>
                   ) : (
                     <></>

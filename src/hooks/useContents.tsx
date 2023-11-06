@@ -12,7 +12,7 @@ const useContents = () => {
     const fetchData = async () => {
       setIsLoading(true)
       try {
-        const res = await axios.get<ContentsDTO>('https://api.learnhub.thanayut.in.th/content')
+        const res = await axios.get<ContentsDTO>('http://localhost:8080/content')
 
         console.log(res.data)
         setContents(res.data)
@@ -37,7 +37,7 @@ const useContents = () => {
 
     setIsSubmitting(true)
     try {
-      const res = await axios.post<CreatePostDTO>('https://api.learnhub.thanayut.in.th/content', newContentBody, {
+      const res = await axios.post<CreatePostDTO>('http://localhost:8080/content', newContentBody, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
