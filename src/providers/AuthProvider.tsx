@@ -1,7 +1,7 @@
-import { ReactNode, createContext, useContext, useState } from 'react'
+import { ReactNode, createContext, useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CredentialDTO, LoginDTO, RegisterDTO } from '../types/dto'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 
 interface IAuthProviderProps {
   children: ReactNode
@@ -28,10 +28,36 @@ export const useAuth = () => {
 const token = localStorage.getItem('token')
 const user = localStorage.getItem('username')
 
+const checkLoginStatus = async (token: string | null): Promise<boolean> => {
+  if (typeof token !== 'string') return false
+  try {
+    const currentUserResponse = await axios.get('http://localhost:8080/auth/me', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+
+    if (currentUserResponse.status === 200) return true
+  } catch (err) {
+    if (err instanceof AxiosError && err.response?.status === 403) {
+      return false
+    }
+
+    throw err
+  }
+  return false
+}
+
 const AuthProvider = ({ children }: IAuthProviderProps) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(!!token)
   const [username, setUsername] = useState<string | null>(user)
   const navigate = useNavigate()
+
+  useEffect(() => {
+    checkLoginStatus(token).then((isLoggedInAlready) => {
+      setIsLoggedIn(isLoggedInAlready)
+    })
+  }, [])
 
   const login = async (username: string, password: string) => {
     const loginBody: LoginDTO = { username, password }
