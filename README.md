@@ -27,7 +27,7 @@ If you are developing a production application, we recommend updating the config
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 
 
-# Hands-on Exercise 10 : ## Front-end Project
+# Hands-on Exercise 10 : Front-end Project
 ### Background
 At this point, you have learned the fundamentals of Front-end Development and have shown progress through each hands-on exercise provided. Now, it is time for a project to demonstrate your overall skills. In this Hands-on Exercise, you will get to a front-end site for example backend API using React and deploy the site to the internet using Netlify.
 
